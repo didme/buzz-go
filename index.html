@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Открыть в Buzz</title>
+<style>body{font-family:-apple-system,system-ui,sans-serif;background:#111;color:#eee;margin:0;padding:32px 20px;text-align:center}
+a.b{display:block;margin:24px auto;padding:18px;max-width:420px;background:#f5b400;color:#111;border-radius:14px;font-size:20px;font-weight:600;text-decoration:none}
+code{word-break:break-all;font-size:12px;color:#aaa}</style></head>
+<body>
+<p>Переход в Buzz…</p>
+<a class="b" id="go" href="#">Открыть в Buzz</a>
+<p><code id="raw"></code></p>
+<script>
+(function(){
+  var q=(location.hash||'').replace(/^#/,'')||(location.search||'').replace(/^\?/,'');
+  if(!/^channel=[0-9a-f-]{36}&id=[0-9a-f]{64}(&thread=[0-9a-f]{64})?$/.test(q)){document.getElementById('raw').textContent='Нет ссылки';return;}
+  var u='buzz://message?'+q;
+  document.getElementById('go').href=u;
+  document.getElementById('raw').textContent=u;
+  location.href=u;
+})();
+</script>
+</body></html>
